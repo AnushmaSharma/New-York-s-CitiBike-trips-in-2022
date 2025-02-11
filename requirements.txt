@@ -1,14 +1,14 @@
-matplotlib == 3.7.1
-pandas == 1.5.1
-requests == 2.28.1
-json == 2.0.9
-seaborn == 0.12.1
-keplergl == 0.3.2
-plotly == 5.13.0
-streamlit == 1.20.0
+matplotlib
+pandas
+requests
+json
+seaborn
+keplergl
+plotly
+streamlit
 streamlit_keplergl
-numerize == 0.12
-pillow == 9.4.0
-plotly == 5.13.0
+numerize
+pillow
+plotly
 
 
