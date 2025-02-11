@@ -1,14 +1,19 @@
-matplotlib
-pandas
-requests
-json
-seaborn
-keplergl
-plotly
-streamlit
-streamlit_keplergl
-numerize
-pillow
-plotly
+# Streamlit and Streamlit components
+streamlit==1.15.0
+streamlit_keplergl==0.1.4
 
+# Plotting libraries
+plotly==5.8.0
+matplotlib==3.4.3
+seaborn==0.11.2
 
+# Data manipulation
+pandas==1.4.2
+numpy==1.23.1
+
+# Other dependencies
+requests==2.26.0
+json==2.0.9  # Might not be necessary if you're using Python 3
+keplergl==0.2.7
+numerize==0.5
+pillow==9.2.0
