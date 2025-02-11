@@ -50,12 +50,12 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True)
 
 
-df['date'] = pd.to_datetime(df['date'])
-
 ###### Create the line chart ######
+
+df['date'] = pd.to_datetime(df['date'])
 fig_1 = make_subplots(specs=[[{"secondary_y": True}]])
 
-#Resample to weekly data
+# Resample to weekly data
 weekly_data = df.resample('W', on='date').agg({'trips_per_day': 'sum', 'avgTemp': 'mean'}).reset_index()
 
 fig_1.add_trace(
@@ -63,29 +63,36 @@ fig_1.add_trace(
     secondary_y=False
 )
 fig_1.add_trace(
-    go.Scatter(x=weekly_data['date'], y=weekly_data['avgTemp'], name='Daily Temperature',  line=dict(color='red')),
+    go.Scatter(x=weekly_data['date'], y=weekly_data['avgTemp'], name='Daily Temperature', line=dict(color='red')),
     secondary_y=True
 )
+
 fig_1.update_layout(
     title=dict(
-        text='Bike Trips & Temperature Trends in New York',  # Title text
-        x=0.5,                      # Centers the title horizontally
-        xanchor='center',           # Anchor the title at the center
-        yanchor='top'               # Keep the title aligned to the top
+        text='Bike Trips & Temperature Trends in New York',
+        x=0.5,
+        xanchor='center',
+        yanchor='top'
     ),
     height=600,
     legend=dict(orientation='h', x=0.5, y=-0.2, xanchor='center')
 )
+
+# Add axis labels
+fig_1.update_xaxes(title_text='Date')
+fig_1.update_yaxes(title_text='Number of Bike Rides', secondary_y=False)
+fig_1.update_yaxes(title_text='Average Temperature', secondary_y=True)
+
 st.plotly_chart(fig_1, use_container_width=True)
 
 
 ############################# Add the map ##############################
-path_to_html = "New York Citibike Trips Aggregated.html"
+path_to_html = "Updated_New_York_Citibike_Trips_Aggregated.html"
 
 # Read the HTML file with UTF-8 encoding
 with open(path_to_html, 'r', encoding='utf-8') as f: 
     html_data = f.read()
 
 # Display the map with scrolling and defined width
-st.header("Aggregated Citibike Trips in New York")
+st.header("Most Common Citibike Trips in New York")
 components.html(html_data, height=800, width=1200, scrolling=True)
