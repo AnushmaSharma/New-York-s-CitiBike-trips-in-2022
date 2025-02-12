@@ -13,7 +13,6 @@ numpy
 
 
 requests
-json  
 keplergl
 numerize
 pillow
